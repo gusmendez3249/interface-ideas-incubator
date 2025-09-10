@@ -1,7 +1,7 @@
 import Layout from "@/components/layout/Layout";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { ExternalLink, Shield, Settings, BookOpen, Cpu, Workflow } from "lucide-react";
+import { Shield, Settings, BookOpen, Cpu, Workflow } from "lucide-react";
+import ExternalContentViewer from "@/components/ui/external-content-viewer";
+import InteractiveCard from "@/components/ui/interactive-card";
 
 const Estandares = () => {
   const estandares = [
@@ -69,46 +69,31 @@ const Estandares = () => {
 
           <div className="grid gap-8">
             {estandares.map((estandar, index) => (
-              <Card key={index} className="shadow-card border-border/50 bg-card/50 backdrop-blur-sm hover:shadow-tech transition-all duration-500">
-                <CardHeader>
-                  <div className="flex items-start space-x-4">
-                    <div className="p-4 rounded-lg bg-gradient-primary flex-shrink-0">
-                      <estandar.icon className="w-8 h-8 text-primary-foreground" />
-                    </div>
-                    <div className="flex-1">
-                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
-                        <div>
-                          <CardTitle className="text-2xl mb-1">{estandar.title}</CardTitle>
-                          <p className="text-lg text-muted-foreground mb-3">{estandar.fullName}</p>
-                          <div className="inline-block px-3 py-1 bg-accent/20 text-accent-foreground rounded-full text-sm font-medium">
-                            {estandar.category}
-                          </div>
-                        </div>
-                        <Button className="gradient-primary shadow-tech group self-start sm:self-center" asChild>
-                          <a href={estandar.link} target="_blank" rel="noopener noreferrer">
-                            <ExternalLink className="w-4 h-4 mr-2 group-hover:rotate-12 transition-transform" />
-                            Más Información
-                          </a>
-                        </Button>
-                      </div>
-                    </div>
-                  </div>
-                </CardHeader>
-                <CardContent className="space-y-6">
-                  <div>
-                    <h3 className="text-lg font-semibold mb-3 text-foreground">¿Qué es?</h3>
-                    <CardDescription className="text-muted-foreground leading-relaxed">
-                      {estandar.description}
-                    </CardDescription>
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold mb-3 text-foreground">¿Para qué sirve?</h3>
-                    <CardDescription className="text-muted-foreground leading-relaxed">
-                      {estandar.purpose}
-                    </CardDescription>
-                  </div>
-                </CardContent>
-              </Card>
+              <InteractiveCard
+                key={index}
+                icon={<estandar.icon className="w-8 h-8 text-primary-foreground" />}
+                title={estandar.title}
+                subtitle={estandar.fullName}
+                description={estandar.description}
+                purpose={estandar.purpose}
+                category={estandar.category}
+                actions={
+                  <>
+                    <ExternalContentViewer
+                      url={estandar.link}
+                      title={`${estandar.title} - ${estandar.fullName}`}
+                      triggerText="Vista Previa"
+                      variant="preview"
+                    />
+                    <ExternalContentViewer
+                      url={estandar.link}
+                      title={`${estandar.title} - ${estandar.fullName}`}
+                      triggerText="Más Información"
+                      variant="default"
+                    />
+                  </>
+                }
+              />
             ))}
           </div>
         </div>

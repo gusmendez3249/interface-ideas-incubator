@@ -45,29 +45,31 @@ const FeaturesSection = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {features.map((feature, index) => (
-            <Card key={index} className="shadow-card border-border/50 bg-card/50 backdrop-blur-sm hover:shadow-tech transition-all duration-500 group">
-              <CardHeader>
-                <div className="flex items-center space-x-4">
-                  <div className="p-3 rounded-lg bg-gradient-primary group-hover:scale-110 transition-transform">
+            <Card key={index} className="shadow-card border-border/50 bg-card/80 backdrop-blur-sm hover:shadow-tech transition-all duration-500 group hover:border-primary/20">
+              <CardHeader className="pb-4">
+                <div className="flex items-start space-x-4">
+                  <div className="p-4 rounded-xl bg-gradient-primary group-hover:scale-110 transition-transform flex-shrink-0">
                     <feature.icon className="w-6 h-6 text-primary-foreground" />
                   </div>
-                  <div>
-                    <CardTitle className="text-xl mb-2">{feature.title}</CardTitle>
-                    <CardDescription className="text-muted-foreground">
+                  <div className="flex-1 min-w-0">
+                    <CardTitle className="text-xl lg:text-2xl mb-3 leading-tight">{feature.title}</CardTitle>
+                    <CardDescription className="text-muted-foreground leading-relaxed text-sm lg:text-base">
                       {feature.description}
                     </CardDescription>
                   </div>
                 </div>
               </CardHeader>
-              <CardContent>
-                <ul className="space-y-2">
-                  {feature.items.map((item, itemIndex) => (
-                    <li key={itemIndex} className="flex items-center text-sm text-muted-foreground">
-                      <div className="w-2 h-2 bg-gradient-primary rounded-full mr-3 flex-shrink-0" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
+              <CardContent className="pt-2">
+                <div className="p-4 rounded-lg bg-muted/20 border border-border/20">
+                  <ul className="space-y-3">
+                    {feature.items.map((item, itemIndex) => (
+                      <li key={itemIndex} className="flex items-center text-sm lg:text-base text-muted-foreground">
+                        <div className="w-2 h-2 bg-gradient-primary rounded-full mr-3 flex-shrink-0" />
+                        <span className="leading-relaxed">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </CardContent>
             </Card>
           ))}

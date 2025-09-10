@@ -1,7 +1,7 @@
 import Layout from "@/components/layout/Layout";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { ExternalLink, Scale, Copyright, Shield, Gavel } from "lucide-react";
+import { Scale, Copyright, Shield, Gavel } from "lucide-react";
+import ExternalContentViewer from "@/components/ui/external-content-viewer";
+import InteractiveCard from "@/components/ui/interactive-card";
 
 const Normativas = () => {
   const normativas = [
@@ -56,45 +56,30 @@ const Normativas = () => {
 
           <div className="grid gap-8">
             {normativas.map((normativa, index) => (
-              <Card key={index} className="shadow-card border-border/50 bg-card/50 backdrop-blur-sm hover:shadow-tech transition-all duration-500">
-                <CardHeader>
-                  <div className="flex items-start space-x-4">
-                    <div className="p-4 rounded-lg bg-gradient-primary flex-shrink-0">
-                      <normativa.icon className="w-8 h-8 text-primary-foreground" />
-                    </div>
-                    <div className="flex-1">
-                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
-                        <div>
-                          <CardTitle className="text-2xl mb-2">{normativa.title}</CardTitle>
-                          <div className="inline-block px-3 py-1 bg-accent/20 text-accent-foreground rounded-full text-sm font-medium">
-                            {normativa.category}
-                          </div>
-                        </div>
-                        <Button className="gradient-primary shadow-tech group self-start sm:self-center" asChild>
-                          <a href={normativa.link} target="_blank" rel="noopener noreferrer">
-                            <ExternalLink className="w-4 h-4 mr-2 group-hover:rotate-12 transition-transform" />
-                            Consultar Ley
-                          </a>
-                        </Button>
-                      </div>
-                    </div>
-                  </div>
-                </CardHeader>
-                <CardContent className="space-y-6">
-                  <div>
-                    <h3 className="text-lg font-semibold mb-3 text-foreground">¿Qué es?</h3>
-                    <CardDescription className="text-muted-foreground leading-relaxed">
-                      {normativa.description}
-                    </CardDescription>
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold mb-3 text-foreground">¿Para qué sirve?</h3>
-                    <CardDescription className="text-muted-foreground leading-relaxed">
-                      {normativa.purpose}
-                    </CardDescription>
-                  </div>
-                </CardContent>
-              </Card>
+              <InteractiveCard
+                key={index}
+                icon={<normativa.icon className="w-8 h-8 text-primary-foreground" />}
+                title={normativa.title}
+                description={normativa.description}
+                purpose={normativa.purpose}
+                category={normativa.category}
+                actions={
+                  <>
+                    <ExternalContentViewer
+                      url={normativa.link}
+                      title={normativa.title}
+                      triggerText="Vista Previa"
+                      variant="preview"
+                    />
+                    <ExternalContentViewer
+                      url={normativa.link}
+                      title={normativa.title}
+                      triggerText="Consultar Ley"
+                      variant="default"
+                    />
+                  </>
+                }
+              />
             ))}
           </div>
         </div>
