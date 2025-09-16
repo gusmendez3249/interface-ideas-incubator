@@ -1,14 +1,15 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Shield, Globe, FileText } from "lucide-react";
+import { Menu, X, Shield, Globe, FileText, Scale, BookOpen } from "lucide-react";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
     { name: "Inicio", path: "/", icon: Globe },
-    { name: "Normativas", path: "/normativas", icon: Shield },
+    { name: "Aspectos Éticos", path: "/aspectos-eticos", icon: BookOpen },
+    { name: "Leyes", path: "/leyes", icon: Scale },
     { name: "Estándares", path: "/estandares", icon: FileText },
     { name: "Privacidad", path: "/privacidad", icon: Shield },
   ];
@@ -17,7 +18,7 @@ const Navbar = () => {
     <nav className="fixed top-0 w-full z-50 bg-gradient-tech backdrop-blur-lg border-b border-border/30 shadow-card">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <Link to="/" className="text-xl font-bold gradient-primary bg-clip-text text-transparent hover:scale-105 transition-transform">
+          <Link to="/" className="text-xl font-bold gradient-primary bg-clip-text text-white rounded-lg hover:scale-105 transition-transform">
             Normateca Digital
           </Link>
 

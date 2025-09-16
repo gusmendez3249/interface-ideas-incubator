@@ -45,7 +45,7 @@ const Normativas = () => {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              <span className="gradient-tech bg-clip-text text-transparent">
+              <span className="gradient-tech bg-clip-text text-white rounded-lg">
                 Normativas Legales
               </span>
             </h1>

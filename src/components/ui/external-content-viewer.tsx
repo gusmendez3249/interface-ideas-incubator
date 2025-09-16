@@ -44,7 +44,7 @@ const ExternalContentViewer = ({
       <DialogContent className="max-w-6xl w-[95vw] h-[90vh] p-0">
         <DialogHeader className="p-6 pb-4 border-b border-border/50">
           <div className="flex items-center justify-between">
-            <DialogTitle className="text-xl gradient-tech bg-clip-text text-transparent">
+            <DialogTitle className="text-xl gradient-tech bg-clip-text text-white rounded-lg">
               {title}
             </DialogTitle>
             <div className="flex items-center gap-2">
